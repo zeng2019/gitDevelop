@@ -10,6 +10,8 @@ import android.widget.ListAdapter;
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               Connector.getDatabase();
+              Log.d("MainActivity","database was created.");
             }
         });
 
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                book.setPrice(16.96);
                book.setPress("Unknow");
                book.save();
+               Log.d("MainActivity","new data was added, name is: "+ book.getName());
            }
        });
 
@@ -56,12 +60,16 @@ public class MainActivity extends AppCompatActivity {
                book.setPrice(14.95);
                book.setPress("Anchor");
                book.updateAll("name = ? and author = ?", "The Lost Symbol","Dan Brown");
+               Log.d("MainActivity","data was updated, name is: "+ book.getName());
            }
        });
 
        Button deleteData = (Button) findViewById(R.id.delete_data);
        deleteData.setOnClickListener(new View.OnClickListener(){
-           DataSupport.deleteAll(Book.class, "price < ?","15");
+           @Override
+           public void onClick(View v) {
+               DataSupport.deleteAll(Book.class, "price < ?","15");
+           }
        });
 
        Button queryData  = (Button) findViewById(R.id.query_data);
