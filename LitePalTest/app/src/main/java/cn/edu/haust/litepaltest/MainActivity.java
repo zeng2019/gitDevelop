@@ -46,20 +46,20 @@ public class MainActivity extends AppCompatActivity {
        updateData.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-/*               Book book = new Book();
-               book.setName("The Lost Symbol");
-               book.setAuthor("Dan Brown");
+               Book book = new Book();
+               book.setName("The Lost Symbol new");
+               book.setAuthor("Dan Brown new");
                book.setPages(510);
                book.setPrice(19.91);
-               book.setPress("Unknow");
+               book.setPress("test");
                book.save();
                book.setPrice(10.99);
-               book.save();*/
+               book.save();
 //update method two:
-               Book book = new Book();
+/*               Book book = new Book();
                book.setPrice(14.95);
                book.setPress("Anchor");
-               book.updateAll("name = ? and author = ?", "The Lost Symbol","Dan Brown");
+               book.updateAll("name = ? and author = ?", "The Lost Symbol","Dan Brown");*/
                Log.d("MainActivity","data was updated, name is: "+ book.getName());
            }
        });
