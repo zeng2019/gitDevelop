@@ -1,6 +1,7 @@
 package cn.edu.haust.starweather;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,14 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.litepal.crud.DataSupport;
-import org.litepal.crud.LitePalSupport;
-import org.litepal.exceptions.DataSupportException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import cn.edu.haust.starweather.db.City;
 import cn.edu.haust.starweather.db.County;
@@ -91,6 +88,12 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryCounties();
+                } else if (currentLevel == LEVEL_COUNTY) {
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
