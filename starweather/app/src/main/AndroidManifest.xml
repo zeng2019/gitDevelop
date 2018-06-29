@@ -19,11 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WeatherActivity" />
 
-        <service
-            android:name=".Service"
-            android:enabled="true"
-            android:exported="true" />
         <service
             android:name=".service.AutoUpdateService"
             android:enabled="true"
