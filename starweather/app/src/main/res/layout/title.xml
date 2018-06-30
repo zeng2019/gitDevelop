@@ -20,14 +20,16 @@
         android:layout_width="117dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="104dp"
+        android:layout_marginStart="104dp"
         android:textColor="#fff"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="134dp"
+        app:layout_constraintStart_toEndOf="@+id/nav_button"
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/title_update_time"
-        android:layout_width="wrap_content"
+        android:layout_width="72dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
@@ -38,6 +40,8 @@
         android:textColor="#fff"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/title_city" />
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toEndOf="@+id/title_city"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>
