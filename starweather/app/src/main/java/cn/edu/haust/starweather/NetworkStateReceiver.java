@@ -36,12 +36,28 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             System.out.println("API level 大于 21");
             ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             Network[] networks = connMgr.getAllNetworks();
-            StringBuilder strs = new StringBuilder();
-            for(int i=0; i<networks.length;i++) {
-                NetworkInfo networkInfo = connMgr.getNetworkInfo(networks[i]);
-                strs.append(networkInfo.getTypeName() + " 连接 " + networkInfo.isConnected());
+            NetworkInfo networkInfo;
+            boolean connected = false;
+//            StringBuilder netStr = new StringBuilder();
+            //检查网络是否连接成功（亦可以显示具体的网络连接内容）
+            for (Network mNetwork : networks) {
+                networkInfo = connMgr.getNetworkInfo(mNetwork);
+                if (networkInfo.getState().equals(NetworkInfo.State.CONNECTED) ) {
+                    connected = true;
+/*                    if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI){
+                        //  Toast.makeText(context,"WIFI已连接",Toast.LENGTH_SHORT).show();
+                        netStr.append("WIFI已连接");
+                    } else if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
+                        netStr.append("移动数据已连接");
+                    }*/
+                }
             }
-            Toast.makeText(context,strs.toString(),Toast.LENGTH_SHORT).show();
+            if (!connected) {
+//                netStr.append("网络未连接，无法获取天气信息，请检查相关设置!");
+                Toast.makeText(context, "网络未连接，无法获取天气信息，请检查手机网络设置!", Toast.LENGTH_SHORT).show();
+            }
+//            Toast.makeText(context, netStr.toString(),Toast.LENGTH_SHORT).show();
+
         }
     }
 }
